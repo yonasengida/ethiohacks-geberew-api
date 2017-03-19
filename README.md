@@ -1,7 +1,7 @@
-# GEBEREW API
+# GEBEREW API FOR ETHIOHACKS EVENT.
 
 #Project Title
-GEBERE BERSHA'LAY
+GEBERE BERSHA'LAY 
 #Team Members
 
 1. DILU KEALE   (System Engineer)
