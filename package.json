@@ -1,0 +1,42 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "HTTP API",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "./node_modules/apidoc/bin/apidoc -i routes/ -o docs",
+    "start": "DEBUG=geberew* nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Yonas Engida <yengida@gmail.com",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "engines": {
+    "node": ">=4.2.3"
+  },
+  "homepage": "",
+  "dependencies": {
+    "bcrypt": "~1.0.2",
+    "body-parser": "~1.16.0",
+    "debug": "~2.6.0",
+    "express": "~4.14.1",
+    "express-validator": "^3.1.2",
+    "moment": "~2.17.1",
+    "mongoose": "~4.8.1",
+    "mongoose-hidden": "^1.1.0",
+    "mongoose-paginate": "^5.0.3",
+    "mongoose-pagination": "^1.0.0"
+  },
+  "devDependencies": {
+    "apidoc": "~0.14.0"
+  }
+}
