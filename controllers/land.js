@@ -4,6 +4,7 @@ var event  = require('events');
 var debug  = require('debug')('geberew-api');
 
 var LandDal = require('../dal/land');
+var FarmerDal = require('../dal/farmer');
 
 exports.noop = function noop(req, res, next) {
   res.json({
@@ -44,14 +45,16 @@ exports.validateLand = function validateLand(req, res, next, id) {
 };
 
 exports.createLand = function createLand(req, res, next){
-    debug('validate Lan data');
+    debug('validate Land data');
 var body = req.body;
 var workflow = new event.EventEmitter();
 
 workflow.on('validateInput', function validateInput() {
     req.checkBody('location.lati', 'invalid latitude').notEmpty().withMessage('Latitude Should not be empty');
     req.checkBody('location.long', 'invalid longititude').notEmpty().withMessage('Longititude Should not be empty');
-
+    req.checkBody('farmer','invalid farmer information')
+    // //.isMongoId(farmer).withMessage('Invalid Farmer infomartion')
+    .notEmpty().withMessage('Farmer should not be Empty');
     if (req.validationErrors()) {
         res.status(400);
         res.json({ error: true, msg: req.validationErrors(), status: 400 })
@@ -68,11 +71,24 @@ workflow.on('registerLand', function registerLand() {
         if (err) {
             return next(err);
         }
-        res.json(land);
-       console.log(body);
+        // res.json(land);
+       //console.log(body);
+        if (land._id) {
+            FarmerDal.update({ _id: land.farmer }, {$push:{ land: land._id} }, function updateFarmer(err, farmerUpdate) {
+                if (err) {
+                    return next(err);
+                }else{
+                    workflow.emit('respond',land);
+                }
+
+            });
+            return ;
+        }
     });
 });
-
+workflow.on('respond',function responsdLand(landData){
+res.json(landData);
+});
 workflow.emit('validateInput');
 
 };

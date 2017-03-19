@@ -99,7 +99,7 @@ exports.getfarmer = function getfarmer(req, res, next){
 res.json(req.doc);
 };
 exports.getfarmers = function getfarmers(req, res, next) {
-    FarmerDal.get({}, function getfarmers(err, farmers) {
+    FarmerDal.getCollection({}, function getfarmers(err, farmers) {
         if (err) {
             return next(err);
         }

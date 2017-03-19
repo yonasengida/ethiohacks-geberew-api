@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 // Farmer Model Definiton.
 
 /**
@@ -38,7 +38,7 @@ var LandSchema = new Schema({
     area: { type: String },
     humidity: { type: String },
     temp:{type:String},
-    //farmer:{ type: Schema.Types.ObjectId, ref: 'Farmer' },
+    farmer:{type: Schema.Types.ObjectId, ref: 'Farmer'},
 });
 // Expose Land model
 module.exports = mongoose.model('Land', LandSchema);

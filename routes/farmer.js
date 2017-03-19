@@ -64,36 +64,6 @@ router.post('/', farmer.createFarmer);
      }
  */
 router.get('/' ,farmer.getfarmers);
-/**
- * @apiDescription Get farmers Collection by Pagination. Use below parameters to query with pagination :- page=<RESULTS_PAGE> and 
- * per_page=<RESULTS_PER_PAGE>.
- * @api {get} /farmers/paginate?page=<RESULTS_PAGE>&per_page=<RESULTS_PER_PAGE> Farmers Collection by Pagination
- * @apiName Get farmers Collection
- * @apiGroup Farmer
- * 
- * @apiSuccess {String} first_name Farmer First Name
- * @apiSuccess {String} middle_name Farmers MIddle Name
- * @apiSuccess {string} mobile Farmer Mobile NUmber
- * @apiSuccess {string} location Farmers Location
- * @apiSuccess {string} location.lati Latitude  of Location
- * @apiSuccess {string} location.long Longitude of Location 
- * 
- * @apiSuccessExample {json} Success-Response:
-* HTTP/1.1 200 OK
-    {
-        "first_name": "abebe",
-        "middle_name": "kebede",
-        "mobile": "+251930015100",
-        "location": {
-            "lati": "1",
-            "long": "1"
-        },
-        "_id": "58cdab596a13435788a9725d"
-     }
- */
-
- 
-//router.get('/paginate',farmer.getByPagination)
 
 /**
  * @apiDescription This Endpoint is allow to get specific collection.

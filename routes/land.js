@@ -66,121 +66,105 @@ var router = express.Router();
 }
 
  *  * @apiSuccessExample {json} Success-Response:
- *HTTP/1.1 200 OK
-        {
-        "location": {
-            "lati": "8.9880E",
-            "long": "38.7893N"
-        },
-        "soil_type": "Clay",
-        "soil_fertility": {
-            "macro": {
-            "nitrogen": "1.4",
-            "phosphorus": "3.1",
-            "potassium": "2.5",
-            "sulfur": "5",
-            "calcium": "1.8",
-            "magnesium": "1.1"
-            },
-            "micro": {
-            "iron": "1.1",
-            "manganese": "1.7",
-            "copper": "1.9",
-            "boron": "1.3",
-            "molybdenum": "3.1",
-            "chlorine": "1.01"
-            }
-        },
-        "area": "400",
-        "humidity": "40",
-        "temp": "13",
-        "_id": "58ce45caaffc177a22c76629"
-       }
+{
+  "location": {
+    "lati": "6.9880E",
+    "long": "38.7893N"
+  },
+  "soil_type": "Sandy",
+  "soil_fertility": {
+    "macro": {
+      "nitrogen": "1.4",
+      "phosphorus": "3.1",
+      "potassium": "2.5",
+      "sulfur": "5",
+      "calcium": "1.8",
+      "magnesium": "1.1"
+    },
+    "micro": {
+      "iron": "1.1",
+      "manganese": "1.7",
+      "copper": "1.9",
+      "boron": "1.3",
+      "molybdenum": "3.1",
+      "chlorine": "1.01"
+    }
+  },
+  "area": "400",
+  "humidity": "40",
+  "temp": "13",
+  "farmer": {
+    "first_name": "hailu",
+    "middle_name": "demelash",
+    "mobile": "+251940898700",
+    "location": {
+      "lati": "5.89876N",
+      "long": "93.89876E"
+    },
+    "land": {
+      "0": "58ce61010b7dc92c85cea3a0"
+    },
+    "_id": "58ce5f9c0b7dc92c85cea39e"
+  },
+  "_id": "58ce61010b7dc92c85cea3a0"
+}
      
  */
 router.post('/', land.createLand);
 
 /**
- * @api {get} /lands Request lands information
+ * @apiDescription This Endpoint  is allow to get Lands Collections
+ * @api {get} /lands Get lands Collections
  * @apiName Get All Lands
  * @apiGroup Land
  *
  *  @apiSuccessExample {json} Success-Response:
   *HTTP/1.1 200 OK
-        {
-        "location": {
-            "lati": "8.9880E",
-            "long": "38.7893N"
-        },
-        "soil_type": "Clay",
-        "soil_fertility": {
-            "macro": {
-            "nitrogen": "1.4",
-            "phosphorus": "3.1",
-            "potassium": "2.5",
-            "sulfur": "5",
-            "calcium": "1.8",
-            "magnesium": "1.1"
-            },
-            "micro": {
-            "iron": "1.1",
-            "manganese": "1.7",
-            "copper": "1.9",
-            "boron": "1.3",
-            "molybdenum": "3.1",
-            "chlorine": "1.01"
-            }
-        },
-        "area": "400",
-        "humidity": "40",
-        "temp": "13",
-        "_id": "58ce45caaffc177a22c76629"
-       }
+  {
+  "location": {
+    "lati": "6.9880E",
+    "long": "38.7893N"
+  },
+  "soil_type": "Sandy",
+  "soil_fertility": {
+    "macro": {
+      "nitrogen": "1.4",
+      "phosphorus": "3.1",
+      "potassium": "2.5",
+      "sulfur": "5",
+      "calcium": "1.8",
+      "magnesium": "1.1"
+    },
+    "micro": {
+      "iron": "1.1",
+      "manganese": "1.7",
+      "copper": "1.9",
+      "boron": "1.3",
+      "molybdenum": "3.1",
+      "chlorine": "1.01"
+    }
+  },
+  "area": "400",
+  "humidity": "40",
+  "temp": "13",
+  "farmer": {
+    "first_name": "hailu",
+    "middle_name": "demelash",
+    "mobile": "+251940898700",
+    "location": {
+      "lati": "5.89876N",
+      "long": "93.89876E"
+    },
+    "land": {
+      "0": "58ce61010b7dc92c85cea3a0"
+    },
+    "_id": "58ce5f9c0b7dc92c85cea39e"
+  },
+  "_id": "58ce61010b7dc92c85cea3a0"
+}
  */
 router.get('/' ,land.getLands);
-/**
- * @apiDescription Get lands Collection by Pagination. Use below parameters to query with pagination :- page=<RESULTS_PAGE> and 
- * per_page=<RESULTS_PER_PAGE>.
- * @api {get} /lands/paginate?page=<RESULTS_PAGE>&per_page=<RESULTS_PER_PAGE> lands Collection by Pagination
- * @apiName Get lands Collection
- * @apiGroup land
- * @apiSuccess {String} land_name lands landname
- * @apiSuccess {String} password lands Password
- * @apiSuccess {string} [realem] lands Group
- * @apiSuccess {string} first_name lands First Name
- * @apiSuccess {string} last_name lands last_name 
- * @apiSuccess {string} [email] lands email
- * @apiSuccess {Date}   [date_of_birth] lands Date of Birth
- * @apiSuccess {string} [city] lands City
- * @apiSuccess {string} [country] lands Country
- * @apiSuccess {string} [mobile] lands Mobile
- * @apiSuccess {string} [gender] lands Gender
- * @apiSuccess {string} land_type land Type , Like Staff, customer
- * 
- * @apiSuccessExample {json} Success-Response:
- *     HTTP/1.1 200 OK
- *     {
- *        {
-    "_id": "589fb45b48baee02dc7c713b",
-       "land_name": "Tsegaw",
-    "realm": "land",
-     "profile": {
-      "_id": "589fb45b48baee02dc7c713c",
-      "land": "589fb45b48baee02dc7c713b",
-      "first_name": "Tsegaw",
-      "last_name": "Tsegaw",
-      "email": "test@gmail.com",
-    
-    },
-    "last_modified": "2017-02-12T01:03:23.983Z",
-    "status": "active",
-    "role": "staff"
-  }
- *     }
- */
 
- 
-//router.get('/paginate',land.noop)
 
 /**@apiDescription Get Specific land Collection. To get Sepecific land information pass id  as parameter.
  * @api {get} /lands/:id Request Specific land information
@@ -191,35 +175,48 @@ router.get('/' ,land.getLands);
  * 
  * @apiSuccessExample {json} Success-Response:
  *HTTP/1.1 200 OK
-        {
-        "location": {
-            "lati": "8.9880E",
-            "long": "38.7893N"
-        },
-        "soil_type": "Clay",
-        "soil_fertility": {
-            "macro": {
-            "nitrogen": "1.4",
-            "phosphorus": "3.1",
-            "potassium": "2.5",
-            "sulfur": "5",
-            "calcium": "1.8",
-            "magnesium": "1.1"
-            },
-            "micro": {
-            "iron": "1.1",
-            "manganese": "1.7",
-            "copper": "1.9",
-            "boron": "1.3",
-            "molybdenum": "3.1",
-            "chlorine": "1.01"
-            }
-        },
-        "area": "400",
-        "humidity": "40",
-        "temp": "13",
-        "_id": "58ce45caaffc177a22c76629"
-       }
+      {
+  "location": {
+    "lati": "6.9880E",
+    "long": "38.7893N"
+  },
+  "soil_type": "Sandy",
+  "soil_fertility": {
+    "macro": {
+      "nitrogen": "1.4",
+      "phosphorus": "3.1",
+      "potassium": "2.5",
+      "sulfur": "5",
+      "calcium": "1.8",
+      "magnesium": "1.1"
+    },
+    "micro": {
+      "iron": "1.1",
+      "manganese": "1.7",
+      "copper": "1.9",
+      "boron": "1.3",
+      "molybdenum": "3.1",
+      "chlorine": "1.01"
+    }
+  },
+  "area": "400",
+  "humidity": "40",
+  "temp": "13",
+  "farmer": {
+    "first_name": "hailu",
+    "middle_name": "demelash",
+    "mobile": "+251940898700",
+    "location": {
+      "lati": "5.89876N",
+      "long": "93.89876E"
+    },
+    "land": {
+      "0": "58ce61010b7dc92c85cea3a0"
+    },
+    "_id": "58ce5f9c0b7dc92c85cea39e"
+  },
+  "_id": "58ce61010b7dc92c85cea3a0"
+}
  */
 
 router.param('id',land.validateLand);
@@ -247,35 +244,48 @@ router.get('/:id', land.getLand);
  *   }
  * @apiSuccessExample {json} Success-Response:
  *HTTP/1.1 200 OK
-        {
-        "location": {
-            "lati": "8.9880E",
-            "long": "38.7893N"
-        },
-        "soil_type": "Clay",
-        "soil_fertility": {
-            "macro": {
-            "nitrogen": "1.4",
-            "phosphorus": "3.1",
-            "potassium": "2.5",
-            "sulfur": "5",
-            "calcium": "1.8",
-            "magnesium": "1.1"
-            },
-            "micro": {
-            "iron": "1.1",
-            "manganese": "1.7",
-            "copper": "1.9",
-            "boron": "1.3",
-            "molybdenum": "3.1",
-            "chlorine": "1.01"
-            }
-        },
-        "area": "400",
-        "humidity": "40",
-        "temp": "13",
-        "_id": "58ce45caaffc177a22c76629"
-     }
+       {
+  "location": {
+    "lati": "6.9880E",
+    "long": "38.7893N"
+  },
+  "soil_type": "Sandy",
+  "soil_fertility": {
+    "macro": {
+      "nitrogen": "1.4",
+      "phosphorus": "3.1",
+      "potassium": "2.5",
+      "sulfur": "5",
+      "calcium": "1.8",
+      "magnesium": "1.1"
+    },
+    "micro": {
+      "iron": "1.1",
+      "manganese": "1.7",
+      "copper": "1.9",
+      "boron": "1.3",
+      "molybdenum": "3.1",
+      "chlorine": "1.01"
+    }
+  },
+  "area": "400",
+  "humidity": "40",
+  "temp": "13",
+  "farmer": {
+    "first_name": "hailu",
+    "middle_name": "demelash",
+    "mobile": "+251940898700",
+    "location": {
+      "lati": "5.89876N",
+      "long": "93.89876E"
+    },
+    "land": {
+      "0": "58ce61010b7dc92c85cea3a0"
+    },
+    "_id": "58ce5f9c0b7dc92c85cea39e"
+  },
+  "_id": "58ce61010b7dc92c85cea3a0"
+}
  */
 router.put('/:id', land.updateLand);
 
@@ -289,35 +299,48 @@ router.put('/:id', land.updateLand);
  * 
  * @apiSuccessExample {json} Success-Response:
  *  *HTTP/1.1 200 OK
-        {
-        "location": {
-            "lati": "8.9880E",
-            "long": "38.7893N"
-        },
-        "soil_type": "Clay",
-        "soil_fertility": {
-            "macro": {
-            "nitrogen": "1.4",
-            "phosphorus": "3.1",
-            "potassium": "2.5",
-            "sulfur": "5",
-            "calcium": "1.8",
-            "magnesium": "1.1"
-            },
-            "micro": {
-            "iron": "1.1",
-            "manganese": "1.7",
-            "copper": "1.9",
-            "boron": "1.3",
-            "molybdenum": "3.1",
-            "chlorine": "1.01"
-            }
-        },
-        "area": "400",
-        "humidity": "40",
-        "temp": "13",
-        "_id": "58ce45caaffc177a22c76629"
-     }
+       {
+  "location": {
+    "lati": "6.9880E",
+    "long": "38.7893N"
+  },
+  "soil_type": "Sandy",
+  "soil_fertility": {
+    "macro": {
+      "nitrogen": "1.4",
+      "phosphorus": "3.1",
+      "potassium": "2.5",
+      "sulfur": "5",
+      "calcium": "1.8",
+      "magnesium": "1.1"
+    },
+    "micro": {
+      "iron": "1.1",
+      "manganese": "1.7",
+      "copper": "1.9",
+      "boron": "1.3",
+      "molybdenum": "3.1",
+      "chlorine": "1.01"
+    }
+  },
+  "area": "400",
+  "humidity": "40",
+  "temp": "13",
+  "farmer": {
+    "first_name": "hailu",
+    "middle_name": "demelash",
+    "mobile": "+251940898700",
+    "location": {
+      "lati": "5.89876N",
+      "long": "93.89876E"
+    },
+    "land": {
+      "0": "58ce61010b7dc92c85cea3a0"
+    },
+    "_id": "58ce5f9c0b7dc92c85cea39e"
+  },
+  "_id": "58ce61010b7dc92c85cea3a0"
+}
  */
 router.delete('/:id', land.noop);
 

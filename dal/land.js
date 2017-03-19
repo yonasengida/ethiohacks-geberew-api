@@ -14,13 +14,9 @@ var moment  = require('moment');
 var Land        = require('../models/land');
 
 var population = [
-  // { 
-  //    path: 'farmer',
-  //    populate: {
-  //      path: '',
-  //      model: ''
-  //    } 
-  // }
+  { 
+     path: 'farmer'
+  }
 ];
 
 /**

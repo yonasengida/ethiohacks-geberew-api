@@ -13,15 +13,18 @@ var moment  = require('moment');
 
 var Farmer        = require('../models/farmer');
 
+// var population = [{ 
+//      path: 'land'
+//   }
+// ];
 var population = [{ 
-     path: 'farmer',
+    path: 'land',
      populate: {
-       path: '',
-       model: ''
+       path: 'land',
+       model: 'Land'
      } 
   }
 ];
-
 /**
  * create a new farmer.
  *

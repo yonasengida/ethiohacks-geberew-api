@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 // Farmer Model Definiton.
 
 /**
@@ -17,7 +17,8 @@ var FarmerSchema = new Schema({
     location: {
         lati: { type: String },
         long: { type: String },
-    }
+    },
+    land:[{type:mongoose.Schema.Types.ObjectId, ref:'Land'}],
 });
 // Expose Farmer model
 module.exports = mongoose.model('Farmer', FarmerSchema);
