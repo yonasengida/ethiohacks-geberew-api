@@ -1,1 +1,1 @@
-web: DEBUG=geberew* nodemon app.js
+web: node app.js
